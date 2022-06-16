@@ -56,7 +56,7 @@ class _WorldStatsScreenState extends State<WorldStatsScreen>
                 if (!snapshot.hasData) {
                   return Expanded(
                     flex: 1,
-                    child: SpinKitFadingCube(
+                    child: SpinKitFadingFour(
                       color: Colors.white,
                       size: 50,
                       controller: _controller,

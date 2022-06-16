@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:covid_tracking_app/Model/world_state_model.dart';
@@ -10,8 +11,20 @@ class StatesServices {
 
     if (response.statusCode == 200) {
       var data = response.body.toString();
-      log('Fetching api ok');
+      // log('Fetching api ok');
       return WorldStateModel.fromJson(data);
+    } else {
+      throw UnimplementedError();
+    }
+  }
+
+  Future<List<dynamic>> fetchCountriesListApi() async {
+    final response = await http.get(Uri.parse(AppUrl.countriesList));
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      // log('Fetching api ok, $data');
+      return (data);
     } else {
       throw UnimplementedError();
     }
